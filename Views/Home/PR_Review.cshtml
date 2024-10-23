@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "ClaimsPage";
+}
+@model List<Claim>
+
+<div class="text-center">
+    <h1 class="display-4">View Claims</h1>
+</div>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Claim ID</th>
+            <th>Date</th>
+            <th>Hourly Rate</th>
+            <th>Hours Worked</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+        <tbody>
+
+                @{
+                    foreach (var claim in Model)
+                    {
+                        claim.Total = claim.HourlyRate * claim.HoursWorked;
+                    <tr>
+
+                        <td>@claim.ID</td>
+                        <td>@claim.Date</td>
+                        <td>@claim.HourlyRate</td>
+                        <td>@claim.HoursWorked</td>
+                        <td>@claim.Total</td>
+                        <td>@claim.Status</td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Home" asp-action="Approve" asp-route-id="@claim.ID">Approve</a>
+                            <a class="btn btn-secondary" asp-controller="Home" asp-action="Reject" asp-route-id="@claim.ID">Reject</a>
+                        </td>
+                    </tr>
+                    }
+                }
+
+        </tbody>
+        </tr>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <h3 class="display-4">No Claims to show</h3>
+    </div>
+}
+

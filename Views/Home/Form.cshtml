@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "ClaimsPage";
+}
+@model Claim
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<div>
+    <form method="post" asp-action="ClaimForm" asp-controller="Home">
+       
+        <label>Lecturer ID</label>
+        <input type="text" asp-for="LecturerID" class="form-control"/>
+        <label>Hours Worked</label>
+        <input type="number" asp-for="HoursWorked" class="form-control" />
+        <label>Hourly Rate</label>
+        <input type="number" asp-for="HourlyRate" class="form-control" />
+        <label>Additional Notes</label>
+        <input type="text" asp-for="AdditionalNotes" class="form-control" />
+
+
+        <button class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
